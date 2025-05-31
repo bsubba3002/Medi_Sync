@@ -3,7 +3,7 @@
 A lightweight and intuitive hospital management web application built with **Flask** and **SQLite**. Manage doctors, patients, and appointment bookings efficiently with role-based access control for admins and doctors.
 
 ---
-
+###live https://medi-sync-j3ou.onrender.com
 ## 🚀 Features
 
 - 👨‍⚕️ Manage Doctors (name, specialization, bed availability)  
