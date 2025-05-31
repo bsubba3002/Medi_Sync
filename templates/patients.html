@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Patients</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background: #f8f9fa;">
+  <h2 style="color: #28a745; margin-bottom: 20px;">Patients</h2>
+  
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div style="
+          padding: 10px; 
+          margin-bottom: 15px; 
+          border-radius: 5px; 
+          color: white; 
+          background-color: {{ 'green' if category == 'success' else '#dc3545' }};
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        ">
+          {{ msg }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  <form method="POST" style="margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+    <input type="text" name="name" placeholder="Patient Name" required
+           style="flex: 1 1 200px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    <input type="number" name="age" placeholder="Age" min="1" required
+           style="width: 80px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    <input type="text" name="phone" placeholder="Phone"
+           style="flex: 1 1 150px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    <input type="email" name="email" placeholder="Email"
+           style="flex: 1 1 200px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    <input type="text" name="address" placeholder="Address"
+           style="flex: 2 1 300px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+    <button type="submit"
+            style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Add Patient
+    </button>
+  </form>
+
+  <table border="0" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: white;">
+    <thead style="background-color: #28a745; color: white;">
+      <tr>
+        <th style="text-align: left;">ID</th>
+        <th style="text-align: left;">Name</th>
+        <th style="text-align: left;">Age</th>
+        <th style="text-align: left;">Phone</th>
+        <th style="text-align: left;">Email</th>
+        <th style="text-align: left;">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in patients %}
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.phone or '-' }}</td>
+        <td>{{ p.email or '-' }}</td>
+        <td>{{ p.address or '-' }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="6" style="text-align:center; padding: 20px;">No patients found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <p style="margin-top: 30px;"><a href="/" style="color: #28a745; text-decoration: none;">&larr; Back to Home</a></p>
+</body>
+</html>

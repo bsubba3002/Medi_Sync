@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Doctors</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9fbfd; padding: 40px; color: #333;">
+
+  <h2 style="color: #0056b3; font-weight: 700; font-size: 2.4em; margin-bottom: 30px; text-align: center;">
+    👨‍⚕️ Doctors
+  </h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div style="max-width: 600px; margin: 0 auto 25px auto; text-align: center;">
+        {% for category, msg in messages %}
+          <div style="color: {{ 'green' if category=='success' else 'red' }}; font-weight: 600; margin-bottom: 10px;">
+            {{ msg }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" style="max-width: 700px; margin: 0 auto 40px auto; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+
+    <input type="text" name="name" placeholder="Doctor Name" required
+           style="flex: 1 1 220px; padding: 10px 15px; border: 2px solid #007bff; border-radius: 6px; font-size: 1em; outline-offset: 2px;" />
+
+    <input type="text" name="specialization" placeholder="Specialization" required
+           style="flex: 1 1 220px; padding: 10px 15px; border: 2px solid #007bff; border-radius: 6px; font-size: 1em; outline-offset: 2px;" />
+
+    <input type="number" name="beds_available" placeholder="Beds Available" min="0" required
+           style="width: 140px; padding: 10px 15px; border: 2px solid #007bff; border-radius: 6px; font-size: 1em; outline-offset: 2px;" />
+
+    <button type="submit" 
+            style="padding: 12px 30px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; font-weight: 700;
+                   transition: background-color 0.3s ease;">
+      Add Doctor
+    </button>
+
+  </form>
+
+  <table style="max-width: 900px; margin: 0 auto; width: 100%; border-collapse: collapse; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.15);">
+    <thead>
+      <tr style="background: #007bff; color: white; font-weight: 700; font-size: 1.1em;">
+        <th style="padding: 14px 20px; border-right: 1px solid rgba(255,255,255,0.3);">ID</th>
+        <th style="padding: 14px 20px; border-right: 1px solid rgba(255,255,255,0.3);">Name</th>
+        <th style="padding: 14px 20px; border-right: 1px solid rgba(255,255,255,0.3);">Specialization</th>
+        <th style="padding: 14px 20px;">Beds Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in doctors %}
+      <tr style="background: #fff; transition: background-color 0.3s ease;">
+        <td style="padding: 12px 20px; border-bottom: 1px solid #ddd; text-align: center;">{{ d[0] }}</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid #ddd;">{{ d[1] }}</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid #ddd;">{{ d[2] }}</td>
+        <td style="padding: 12px 20px; border-bottom: 1px solid #ddd; text-align: center;">{{ d[3] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p style="text-align:center; margin-top: 35px;">
+    <a href="/" 
+       style="color: #007bff; text-decoration: none; font-weight: 600; font-size: 1em; transition: color 0.3s ease;">
+       ← Back to Home
+    </a>
+  </p>
+
+  <style>
+    button:hover {
+      background-color: #0056b3;
+    }
+    a:hover {
+      color: #004085;
+      text-decoration: underline;
+    }
+    tbody tr:hover {
+      background-color: #e9f2ff;
+      cursor: default;
+    }
+    input:focus {
+      border-color: #0056b3;
+      box-shadow: 0 0 5px rgba(0,86,179,0.5);
+    }
+  </style>
+</body>
+</html>

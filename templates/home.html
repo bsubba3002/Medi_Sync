@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Hospital Management</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #d0e8ff, #f0f8ff); text-align: center; padding: 80px 20px;">
+
+  <h1 style="color: #003366; margin-bottom: 50px; font-weight: 800; font-size: 3.2em; text-shadow: 1px 1px 4px rgba(0,0,0,0.1);">
+    🏥 Welcome to Hospital Management System
+  </h1>
+
+  <a href="/doctors" 
+     style="
+       display: inline-block; 
+       margin: 20px; 
+       padding: 18px 50px; 
+       background: linear-gradient(45deg, #007bff, #0056b3); 
+       color: white; 
+       text-decoration: none; 
+       border-radius: 12px; 
+       font-weight: 700; 
+       font-size: 1.1em;
+       box-shadow: 0 8px 15px rgba(0,123,255,0.3);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;">
+     🩺 Manage Doctors
+  </a>
+
+  <a href="/patients" 
+     style="
+       display: inline-block; 
+       margin: 20px; 
+       padding: 18px 50px; 
+       background: linear-gradient(45deg, #28a745, #1e7e34); 
+       color: white; 
+       text-decoration: none; 
+       border-radius: 12px; 
+       font-weight: 700; 
+       font-size: 1.1em;
+       box-shadow: 0 8px 15px rgba(40,167,69,0.3);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;">
+     🧑‍⚕️ Manage Patients
+  </a>
+
+  <a href="/book" 
+     style="
+       display: inline-block; 
+       margin: 20px; 
+       padding: 18px 50px; 
+       background: linear-gradient(45deg, #ffc107, #cc9a06);
+       color: #212529; 
+       text-decoration: none; 
+       border-radius: 12px; 
+       font-weight: 700; 
+       font-size: 1.1em;
+       box-shadow: 0 8px 15px rgba(255,193,7,0.3);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;">
+     📅 Book Appointment
+  </a>
+
+  <script>
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateY(-4px)';
+        link.style.boxShadow = '0 12px 20px rgba(0,0,0,0.2)';
+      });
+      link.addEventListener('mouseleave', () => {
+        link.style.transform = 'translateY(0)';
+        if (link.textContent.includes('Doctors')) {
+          link.style.boxShadow = '0 8px 15px rgba(0,123,255,0.3)';
+        } else if (link.textContent.includes('Patients')) {
+          link.style.boxShadow = '0 8px 15px rgba(40,167,69,0.3)';
+        } else if (link.textContent.includes('Appointment')) {
+          link.style.boxShadow = '0 8px 15px rgba(255,193,7,0.3)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
